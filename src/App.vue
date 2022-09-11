@@ -1,31 +1,53 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import {ref} from 'vue'
+import InputBirthday from './components/input-birthday.vue'
+import LifeBoxs from './components/life-boxs.vue'
+
+const weeks = ref(null);
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <header class="flex flex-col md:flex-row md:flex-row-reverse items-center">
+    <figure class="logo-wrap mb-2 md:mb-0">
+      <img src="/assets/duck.jpg" class="logo" alt="Vite logo" />
+    </figure>
+    <h1 class="text-4xl md:text-5xl mr-0 md:mr-2">나는 인생 <br class="md:hidden"/> <span class="text-yellow-300">{{weeks ?? 'N'}}</span>주차 입니다</h1>
+  </header>
+  <input-birthday @get-weeks="weeks = $event"/>
+  <life-boxs :weeks="weeks"/>
+  <footer class="flex flex-col read-the-docs mt-4">
+    <a href="https://github.com/programmer-heeney/your-life" target="_blank">See the code on Github.</a>
+    <span class="source">
+      이미지: 
+      <a  href="https://kr.freepik.com/free-vector/duck-wearing-a-dinosaur-costume-cartoon-illustration_12781717.htm#query=character&position=0&from_view=keyword">작가 mamewmy</a> 
+      출처 Freepik
+    </span>
+  </footer>
 </template>
 
 <style scoped>
+.logo-wrap{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   will-change: filter;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
+.logo-wrap:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.source {
+  font-size: 15px;
+}
+.read-the-docs {
+  color: #888;
+}
+.read-the-docs:hover{
+  color: white;
 }
 </style>
