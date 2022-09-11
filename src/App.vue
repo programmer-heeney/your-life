@@ -14,7 +14,7 @@ const weeks = ref(null);
     <h1 class="text-4xl md:text-5xl mr-0 md:mr-2">나는 인생 <br class="md:hidden"/> <span class="text-yellow-300">{{weeks ?? 'N'}}</span>주차 입니다</h1>
   </header>
   <input-birthday @get-weeks="weeks = $event"/>
-  <life-boxs :weeks="weeks"/>
+  <life-boxs v-if="weeks" :weeks="weeks"/>
   <footer class="flex flex-col read-the-docs mt-4">
     <a href="https://github.com/programmer-heeney/your-life" target="_blank">See the code on Github.</a>
     <span class="source">
