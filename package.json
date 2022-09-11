@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy":"yarn build && git add dist -f && git commit -m 'hosting' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "moment": "^2.29.4",
