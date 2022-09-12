@@ -26,7 +26,7 @@ watch(() => date.value, (newVal :any) => {
     <form class="bg-white rounded px-8 pt-6 pb-8" @submit.prevent>
       <label class="block text-gray-600 text-sm text-left font-bold mb-2" for="date">
         🎂 생년월일을 입력하세요
-        <span class="text-sm text-gray-400">{{moment().format('L')}}</span>
+        <span class="text-sm text-gray-400">{{moment().endOf('month').format('L')}}</span>
       </label>
       <div class="flex flex-col md:flex-row">
         <v-date-picker v-model="date" :locale="userLocale" class="flex-grow" color="green" is-dark> 
@@ -35,7 +35,7 @@ watch(() => date.value, (newVal :any) => {
               id="date"
               class="bg-white text-gray-700 w-full py-2 px-3 appearance-none border rounded-l focus:outline-none"
               :value="inputValue"
-              :placeholder="moment().format('L')"
+              :placeholder="moment().endOf('month').format('L')"
               v-on="inputEvents"
               @keyup.enter.prevent="clickInput"
             />
