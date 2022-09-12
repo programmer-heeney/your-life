@@ -6,6 +6,7 @@ const emits = defineEmits(['getWeeks'])
 
 const today = moment();
 const date = ref(null);
+const userLocale = navigator.language;
 
 const clickInput = () => {
   const calendar:any = document.querySelector('.vc-popover-content');
@@ -25,15 +26,16 @@ watch(() => date.value, (newVal :any) => {
     <form class="bg-white rounded px-8 pt-6 pb-8" @submit.prevent>
       <label class="block text-gray-600 text-sm text-left font-bold mb-2" for="date">
         🎂 생년월일을 입력하세요
+        <span class="text-sm text-gray-400">{{moment().format('L')}}</span>
       </label>
       <div class="flex flex-col md:flex-row">
-        <v-date-picker v-model="date" class="flex-grow" color="green" is-dark>
+        <v-date-picker v-model="date" :locale="userLocale" class="flex-grow" color="green" is-dark> 
           <template v-slot="{ inputValue, inputEvents }">
             <input
               id="date"
               class="bg-white text-gray-700 w-full py-2 px-3 appearance-none border rounded-l focus:outline-none"
               :value="inputValue"
-              placeholder="출생년도.월.일 8자리 입력"
+              :placeholder="moment().format('L')"
               v-on="inputEvents"
               @keyup.enter.prevent="clickInput"
             />
