@@ -31,12 +31,12 @@ const weeks = ref(null);
   height: 150px;
   border-radius: 50%;
   overflow: hidden;
+  will-change: filter;
 }
 .logo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: filter;
 }
 .logo-wrap:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
